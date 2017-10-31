@@ -52,6 +52,49 @@ struct tquat
     tquat(T x, T y, T z, T w) : x(x), y(y), z(z), w(w) {}
 };
 
+template<typename T>
+struct tmat3
+{
+    tmat3(){}
+    explicit tmat3(T f)
+    {
+        col[0].x = f;
+        col[1].y = f;
+        col[2].z = f;
+    }
+    
+    tvec3<T> operator[](const int &i) const {
+        return col[i];
+    }
+    tvec3<T>& operator[](const int &i){
+        return col[i];
+    }
+private:
+    tvec3<T> col[3];
+};
+
+template<typename T>
+struct tmat4
+{
+    tmat4(){}
+    explicit tmat4(T f)
+    {
+        col[0].x = f;
+        col[1].y = f;
+        col[2].z = f;
+        col[3].w = f;
+    }
+    
+    tvec4<T> operator[](const int &i) const {
+        return col[i];
+    }
+    tvec4<T>& operator[](const int &i){
+        return col[i];
+    }
+private:
+    tvec4<T> col[4];
+};
+
 typedef tvec2<float> vec2;
 typedef tvec2<int> ivec2;
 typedef tvec2<double> dvec2;
@@ -66,6 +109,12 @@ typedef tvec4<double> dvec4;
 
 typedef tquat<float> quat;
 typedef tquat<double> dquat;
+
+typedef tmat3<float> mat3;
+typedef tmat3<double> dmat3;
+
+typedef tmat4<float> mat4;
+typedef tmat4<double> dmat4;
 
 // ====== Functions ======
 
