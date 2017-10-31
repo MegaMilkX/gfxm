@@ -70,15 +70,15 @@ typedef tquat<double> dquat;
 // ====== Functions ======
 
 template<typename T>
-inline tvec2<T> operator+(const tvec2<T> &a, const tvec2<T> &b){
+inline tvec2<T> operator+(const tvec2<T>& a, const tvec2<T>& b){
     return tvec2<T>(a.x + b.x, a.y + b.y);
 }
 template<typename T>
-inline tvec3<T> operator+(const tvec3<T> &a, const tvec3<T> &b){
+inline tvec3<T> operator+(const tvec3<T>& a, const tvec3<T>& b){
     return tvec3<T>(a.x + b.x, a.y + b.y, a.z + b.z);
 }
 template<typename T>
-inline tvec4<T> operator+(const tvec4<T> &a, const tvec4<T> &b){
+inline tvec4<T> operator+(const tvec4<T>& a, const tvec4<T>& b){
     return tvec4<T>(a.x + b.x, a.y + b.y, a.z + b.z, a.w + b.w);
 }
 
@@ -87,11 +87,11 @@ inline tvec2<T> operator+=(tvec2<T>& a, const tvec2<T>& b){
     return a = a + b;
 }
 template<typename T>
-inline tvec3<T> operator+=(tvec3<T> &a, const tvec3<T> &b){
+inline tvec3<T> operator+=(tvec3<T>& a, const tvec3<T>& b){
     return a = a + b;
 }
 template<typename T>
-inline tvec4<T> operator+=(tvec4<T> &a, const tvec4<T> &b){
+inline tvec4<T> operator+=(tvec4<T>& a, const tvec4<T>& b){
     return a = a + b;
 }
 
@@ -100,11 +100,11 @@ inline tvec2<T> operator-(const tvec2<T>& a, const tvec2<T>& b){
     return tvec2<T>(a.x - b.x, a.y - b.y);
 }
 template<typename T>
-inline tvec3<T> operator-(const tvec3<T> &a, const tvec3<T> &b){
+inline tvec3<T> operator-(const tvec3<T>& a, const tvec3<T>& b){
     return tvec3<T>(a.x - b.x, a.y - b.y, a.z - b.z);
 }
 template<typename T>
-inline tvec4<T> operator-(const tvec4<T> &a, const tvec4<T> &b){
+inline tvec4<T> operator-(const tvec4<T>& a, const tvec4<T>& b){
     return tvec4<T>(a.x - b.x, a.y - b.y, a.z - b.z, a.w - b.w);
 }
 
@@ -113,11 +113,11 @@ inline tvec2<T> operator-=(tvec2<T>& a, const tvec2<T>& b){
     return a = a - b;
 }
 template<typename T>
-inline tvec3<T> operator-=(tvec3<T> &a, const tvec3<T> &b){
+inline tvec3<T> operator-=(tvec3<T>& a, const tvec3<T>& b){
     return a = a - b;
 }
 template<typename T>
-inline tvec4<T> operator-=(tvec4<T> &a, const tvec4<T> &b){
+inline tvec4<T> operator-=(tvec4<T>& a, const tvec4<T>& b){
     return a = a - b;
 }
 
@@ -126,12 +126,76 @@ inline tvec2<T> operator-(const tvec2<T>& v){
     return tvec2<T>(-v.x, -v.y);
 }
 template<typename T>
-inline tvec3<T> operator-(const tvec3<T> &v){
+inline tvec3<T> operator-(const tvec3<T>& v){
     return tvec3<T>(-v.x, -v.y, -v.z);
 }
 template<typename T>
-inline tvec4<T> operator-(const tvec4<T> &v){
+inline tvec4<T> operator-(const tvec4<T>& v){
     return tvec4<T>(-v.x, -v.y, -v.z, -v.w);
+}
+
+template<typename T, typename M>
+inline tvec2<T> operator*(const tvec2<T>& a, const M& f){
+    return tvec2<T>(a.x * f, a.y * f);
+}
+template<typename T, typename M>
+inline tvec2<T> operator*(const M& f, const tvec2<T>& a){
+    return tvec2<T>(a.x * f, a.y * f);
+}
+template<typename T, typename M>
+inline tvec3<T> operator*(const tvec3<T>& a, const M& f){
+    return tvec3<T>(a.x * f, a.y * f, a.z * f);
+}
+template<typename T, typename M>
+inline tvec3<T> operator*(const M& f, const tvec3<T>& a){
+    return tvec3<T>(a.x * f, a.y * f, a.z * f);
+}
+template<typename T, typename M>
+inline tvec4<T> operator*(const tvec4<T>& a, const M& f){
+    return tvec4<T>(a.x * f, a.y * f, a.z * f, a.w * f);
+}
+template<typename T, typename M>
+inline tvec4<T> operator*(const M& f, const tvec4<T>& a){
+    return tvec4<T>(a.x * f, a.y * f, a.z * f, a.w * f);
+}
+
+template<typename T, typename M>
+inline tvec2<T> operator*=(tvec2<T>& a, const M& f){
+    return a = a * f;
+}
+template<typename T, typename M>
+inline tvec3<T> operator*=(tvec3<T>& a, const M& f){
+    return a = a * f;
+}
+template<typename T, typename M>
+inline tvec4<T> operator*=(tvec4<T>& a, const M& f){
+    return a = a * f;
+}
+
+template<typename T, typename M>
+inline tvec2<T> operator/(const tvec2<T>& a, const M& f){
+    return tvec2<T>(a.x / f, a.y / f);
+}
+template<typename T, typename M>
+inline tvec3<T> operator/(const tvec3<T>& a, const M& f){
+    return tvec3<T>(a.x / f, a.y / f, a.z / f);
+}
+template<typename T, typename M>
+inline tvec4<T> operator/(const tvec4<T>& a, const M& f){
+    return tvec4<T>(a.x / f, a.y / f, a.z / f, a.w / f);
+}
+
+template<typename T, typename M>
+inline tvec2<T> operator/=(tvec2<T>& a, const M& f){
+    return a / f;
+}
+template<typename T, typename M>
+inline tvec3<T> operator/=(tvec3<T>& a, const M& f){
+    return a / f;
+}
+template<typename T, typename M>
+inline tvec4<T> operator/=(tvec4<T>& a, const M& f){
+    return a / f;
 }
 
 inline float qrsqrt(const float &n)
@@ -154,11 +218,11 @@ inline float sqrt(const float &n)
 }
 
 template<typename T>
-inline T length(const tvec2<T>& v) { return sqrt(x*x + y*y); }
+inline T length(const tvec2<T>& v) { return sqrt(v.x*v.x + v.y*v.y); }
 template<typename T>
-inline T length(const tvec3<T>& v) { return sqrt(x*x + y*y + z*z); }
+inline T length(const tvec3<T>& v) { return sqrt(v.x*v.x + v.y*v.y + v.z*v.z); }
 template<typename T>
-inline T length(const tvec4<T>& v) { return sqrt(x*x + y*y + z*z + w*w); }
+inline T length(const tvec4<T>& v) { return sqrt(v.x*v.x + v.y*v.y + v.z*v.z + v.w*v.w); }
 
 template<typename T>
 inline tvec2<T> normalize(const tvec2<T>& v) 
