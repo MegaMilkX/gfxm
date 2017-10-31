@@ -251,6 +251,28 @@ inline tvec4<T> normalize(const tvec4<T>& v)
     return v / l;
 }
 
+template<typename T>
+inline T dot(const tvec2<T>& a, const tvec2<T>& b)
+{
+    return a.x * b.x + a.y * b.y;
+}
+template<typename T>
+inline T dot(const tvec3<T>& a, const tvec3<T>& b)
+{
+    return a.x * b.x + a.y * b.y + a.z * b.z;
+}
+template<typename T>
+inline T dot(const tvec4<T>& a, const tvec4<T>& b)
+{
+    return a.x * b.x + a.y * b.y + a.z * b.z + a.w * b.z;
+}
+
+template<typename T>
+inline tvec3<T> cross(const tvec3<T>& a, const tvec3<T>& b)
+{
+    return tvec3<T>(a.y * b.z - a.z * b.y, a.z * b.x - a.x * b.z, a.x * b.y - a.y * b.x);
+}
+
 }
 
 #endif
