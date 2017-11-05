@@ -4,6 +4,9 @@
 #include <math.h>
 
 namespace gfxm{
+
+const float pi = 3.14159265359f;
+const double d_pi = 3.14159265359;
     
 // ====== Types ==========
 
