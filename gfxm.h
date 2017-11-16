@@ -153,6 +153,24 @@ typedef tmat4<double> dmat4;
 // ====== Functions ======
 
 template<typename T>
+T _min(T a, T b)
+{
+    if (a < b)
+        return a;
+    else
+        return b;
+}
+
+template<typename T>
+T _max(T a, T b)
+{
+    if (a > b)
+        return a;
+    else
+        return b;
+}
+
+template<typename T>
 inline tvec2<T> operator+(const tvec2<T>& a, const tvec2<T>& b){
     return tvec2<T>(a.x + b.x, a.y + b.y);
 }
@@ -920,7 +938,7 @@ public:
 
     void look_at(const vec3& target, const vec3& forward, const vec3& up = vec3(0.0f, 1.0f, 0.0f), float f = 1.0f)
     {
-        f = max(-1.0f, min(f, 1.0f));
+        f = _max(-1.0f, _min(f, 1.0f));
 
         mat4 mat = matrix();
         vec3 pos = mat[3];
@@ -942,7 +960,7 @@ public:
          }*/
         else
         {
-            float rotAngle = acosf(max(-1.0f, min(d, 1.0f))) * f;
+            float rotAngle = acosf(_max(-1.0f, _min(d, 1.0f))) * f;
             q = angle_axis(rotAngle, rotAxis);
         }
 
